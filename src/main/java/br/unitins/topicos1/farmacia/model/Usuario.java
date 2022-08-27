@@ -1,11 +1,26 @@
 package br.unitins.topicos1.farmacia.model;
 
-public class Usuario {
+import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Usuario implements Cloneable {
+
+	@Id
 	private Integer id;
 	private String nome;
 	private String login;
 	private String senha;
+	
+	public Usuario getClone() {
+		try {
+			return (Usuario) super.clone();
+		} catch (CloneNotSupportedException e) {
+			return null;
+		}
+	}
 
 	public Integer getId() {
 		return id;
@@ -38,5 +53,24 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	
 
 }

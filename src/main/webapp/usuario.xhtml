@@ -19,8 +19,12 @@
 			<h:commandButton 
 				value="Incluir" 
 				actionListener="#{usuarioController.incluir}" />
-			<h:commandButton value="Alterar" />
-			<h:commandButton value="Excluir"/>
+			<h:commandButton 
+				value="Alterar" 
+				actionListener="#{usuarioController.alterar}" />
+			<h:commandButton 
+				value="Excluir"
+				actionListener="#{usuarioController.excluir}"/>
 			<h:commandButton 
 				value="Limpar"
 				actionListener="#{usuarioController.limpar}"/>
@@ -28,6 +32,10 @@
 		<h:dataTable 
 			value="#{usuarioController.listaUsuario}"
 			var="obj">
+			<h:column>
+				<f:facet name="header">Id</f:facet> 
+				<h:outputLabel value="#{obj.id}"/>
+			</h:column>
 			<h:column>
 				<f:facet name="header">Nome</f:facet> 
 				<h:outputLabel value="#{obj.nome}"/>
@@ -45,6 +53,9 @@
 				<h:commandButton 
 					value="Editar"
 					actionListener="#{usuarioController.editar(obj)}"/>
+				<h:commandButton 
+					value="Excluir"
+					actionListener="#{usuarioController.excluir(obj)}"/>
 			</h:column>
 		</h:dataTable>
 	</h:form>
