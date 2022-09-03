@@ -11,52 +11,43 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import br.unitins.topicos1.farmacia.model.Usuario;
+import br.unitins.topicos1.farmacia.repository.UsuarioRepository;
 
 @Named
-@ApplicationScoped
+@ViewScoped
 public class UsuarioController implements Serializable {
 	
 
 	private static final long serialVersionUID = 168067236765100328L;
 	private Usuario usuario = null;
 	private List<Usuario> listaUsuario;
-	private int cont = 1;
 	
 	public void incluir() {
-		getUsuario().setId(cont++);
-		getListaUsuario().add(getUsuario());
+		UsuarioRepository repo = new UsuarioRepository();
+		repo.salvar(getUsuario());
 		limpar();
+		// foi setado como nulo para buscar no banco
+		listaUsuario = null;
 	}
 	
 	public void alterar() {
-		getListaUsuario().
-			set(getListaUsuario().
-					indexOf(getUsuario()), getUsuario());
-		
-		
-//		// a posicao da lista
-//		int index = getListaUsuario().indexOf(getUsuario());
-//		// substituindo o usuario da posicao index
-//		getListaUsuario().set(index, getUsuario());
-		
-//		for (int i = 0; i < getListaUsuario().size(); i++) {
-//			if (getUsuario().getId()
-//					.equals(getListaUsuario().get(i).getId())) {
-//				
-//				getListaUsuario().set(i, getUsuario());
-//			}
-//		}
+		UsuarioRepository repo = new UsuarioRepository();
+		repo.salvar(getUsuario());
+		limpar();
+		// foi setado como nulo para buscar no banco
+		listaUsuario = null;
 	}
 	
+	// acionado pelo botao excluir
 	public void excluir() {
-//		getListaUsuario().remove(getUsuario());
-//		limpar();
 		excluir(getUsuario());
-		limpar();		
+		limpar();	
 	}
 	
+	// acionado pelo botao da tabela (excluir)
 	public void excluir(Usuario usu) {
-		getListaUsuario().remove(usu);
+		UsuarioRepository repo = new UsuarioRepository();
+		repo.deletar(usu.getId());
 	}
 	
 	public void limpar() {
@@ -64,7 +55,9 @@ public class UsuarioController implements Serializable {
 	}
 	
 	public void editar(Usuario usu) {
-		setUsuario(usu.getClone());
+		setUsuario(usu);
+		
+//		setUsuario(usu.getClone());
 		
 //		setUsuario(new Usuario());
 //		getUsuario().setId(usu.getId());
@@ -74,8 +67,12 @@ public class UsuarioController implements Serializable {
 	}
 	
 	public List<Usuario> getListaUsuario() {
-		if (listaUsuario == null) 
-			listaUsuario = new ArrayList<Usuario>();
+		if (listaUsuario == null) {
+			UsuarioRepository repo = new UsuarioRepository();
+			listaUsuario = repo.buscarTodos();
+			if (listaUsuario == null)
+				listaUsuario = new ArrayList<Usuario>();
+		}
 		return listaUsuario;
 	}
 
