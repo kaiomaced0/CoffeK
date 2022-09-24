@@ -3,8 +3,8 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-	<persistence-unit name="Farmacia">
-		<class>br.unitins.topicos1.farmacia.model.Usuario</class>
+	<persistence-unit name="Lanch">
+		<class>br.unitins.topicos1.lanch.model.Usuario</class>
 		<properties>
 			<!-- DB Driver -->
 			<property name="javax.persistence.jdbc.driver"
@@ -12,7 +12,7 @@
 
 			<!-- BD Name -->
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://localhost:5432/farmaciadb" />
+				value="jdbc:postgresql://localhost:5432/lanchdb" />
 
 			<!-- DB User -->
 			<property name="javax.persistence.jdbc.user"

@@ -6,14 +6,28 @@
 	<title>Cadastro de Usuário</title>
 </h:head>
 <h:body>
+<h:messages style="color:red" showDetail="false"/>
 	<h:form>
+	<h:panelGroup id="pgPrincipal">
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nome: "/>
-			<h:inputText value="#{usuarioController.usuario.nome}"/>
+			<h:inputText id="itNome" value="#{usuarioController.usuario.nome}"
+			required="true"
+			requiredMessage="O nome deve ser Informado!"
+			/>
 			<h:outputLabel value="Login: "/>
-			<h:inputText value="#{usuarioController.usuario.login}"/>
+			<h:inputText id="itLogin" value="#{usuarioController.usuario.login}">
+			<f:ajax execute="@this" 
+					render="messages"
+					event="blur"
+					listener="#{usuarioController.validaLogin}"
+			/>
+			</h:inputText>
 			<h:outputLabel value="Senha: "/>
-			<h:inputSecret value="#{usuarioController.usuario.senha}"/>
+			<h:inputSecret value="#{usuarioController.usuario.senha}"
+			required="true"
+			requiredMessage="A senha deve ser Informada!"
+			/>
 		</h:panelGrid>
 		<h:panelGrid columns="4">
 			<h:commandButton 
@@ -21,15 +35,21 @@
 				actionListener="#{usuarioController.incluir}" />
 			<h:commandButton 
 				value="Alterar" 
-				actionListener="#{usuarioController.alterar}" />
+				actionListener="#{usuarioController.alterar}">
+				<f:ajax execute="itNome" render="dataTable"/>
+			</h:commandButton>
 			<h:commandButton 
 				value="Excluir"
-				actionListener="#{usuarioController.excluir}"/>
+				actionListener="#{usuarioController.excluir}">
+				<f:ajax execute="itLogin" render="dataTable"/>
+			</h:commandButton>
 			<h:commandButton 
 				value="Limpar"
 				actionListener="#{usuarioController.limpar}"/>
 		</h:panelGrid>
+	</h:panelGroup>
 		<h:dataTable 
+		id="dataTable"
 			value="#{usuarioController.listaUsuario}"
 			var="obj">
 			<h:column>
@@ -52,7 +72,9 @@
 				<f:facet name="header">Ação</f:facet> 
 				<h:commandButton 
 					value="Editar"
-					actionListener="#{usuarioController.editar(obj)}"/>
+					actionListener="#{usuarioController.editar(obj)}">
+					<f:ajax execute="@this" render="@form:pgPrincipal"/>
+				</h:commandButton>
 				<h:commandButton 
 					value="Excluir"
 					actionListener="#{usuarioController.excluir(obj)}"/>

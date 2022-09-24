@@ -1,4 +1,4 @@
-package br.unitins.topicos1.farmacia.repository;
+package br.unitins.topicos1.lanch.repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import br.unitins.topicos1.farmacia.model.Usuario;
+import br.unitins.topicos1.lanch.model.Usuario;
 
 public class UsuarioRepository {
 

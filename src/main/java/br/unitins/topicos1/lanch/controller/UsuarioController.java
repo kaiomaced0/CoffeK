@@ -1,17 +1,19 @@
-package br.unitins.topicos1.farmacia.controller;
+package br.unitins.topicos1.lanch.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
+//import javax.enterprise.context.ApplicationScoped;
+//import javax.enterprise.context.RequestScoped;
+//import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import br.unitins.topicos1.farmacia.model.Usuario;
-import br.unitins.topicos1.farmacia.repository.UsuarioRepository;
+import br.unitins.topicos1.hash.HashUtils;
+import br.unitins.topicos1.lanch.model.Usuario;
+import br.unitins.topicos1.lanch.repository.UsuarioRepository;
 
 @Named
 @ViewScoped
@@ -22,8 +24,17 @@ public class UsuarioController implements Serializable {
 	private Usuario usuario = null;
 	private List<Usuario> listaUsuario;
 	
+	public void validaLogin() {
+		if(getUsuario().getLogin().equals("teste22")) {
+			FacesMessage message = new FacesMessage("Login ja existe", null);
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
+		
+	}
+	
 	public void incluir() {
 		UsuarioRepository repo = new UsuarioRepository();
+		getUsuario().setSenha(HashUtils.getHashMd5(getUsuario().getSenha()));
 		repo.salvar(getUsuario());
 		limpar();
 		// foi setado como nulo para buscar no banco
@@ -32,6 +43,7 @@ public class UsuarioController implements Serializable {
 	
 	public void alterar() {
 		UsuarioRepository repo = new UsuarioRepository();
+		getUsuario().setSenha(HashUtils.getHashMd5(getUsuario().getSenha()));
 		repo.salvar(getUsuario());
 		limpar();
 		// foi setado como nulo para buscar no banco

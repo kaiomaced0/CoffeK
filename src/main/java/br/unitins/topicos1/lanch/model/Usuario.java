@@ -1,4 +1,4 @@
-package br.unitins.topicos1.farmacia.model;
+package br.unitins.topicos1.lanch.model;
 
 import java.util.Objects;
 

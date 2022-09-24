@@ -4,13 +4,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.unitins.topicos1.farmacia.model.Usuario;
+import br.unitins.topicos1.lanch.model.Usuario;
 
 public class TesteJPA {
 
 	
 	public static void main(String[] args) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Farmacia");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Lanch");
 		EntityManager em = emf.createEntityManager();
 		
 		Usuario usuario = new Usuario();
