@@ -22,8 +22,9 @@
 					event="blur"
 					listener="#{usuarioController.validarLogin}"
 			/>
+			</h:inputText>
 			<h:outputLabel value="Data de Nascimento "/>
-			<h:inputText id="itData nascimento" value="#{usuarioController.usuario.dataNascimento}">
+			<h:inputText id="itDataNascimento" value="#{usuarioController.usuario.dataNascimento}">
 			<f:ajax execute="@this" 
 					render="messages"
 					event="blur"
@@ -31,11 +32,30 @@
 			/>
 			<f:convertDateTime pattern="dd/MM/yyyy" type="localDate"/>
 			</h:inputText>
+			
+				<h:outputLabel value="Modelo da empresa em que trabalha "/>
+				<h:selectOneMenu value="#{usuarioController.usuario.modelEmpresa}">
+					<f:selectItem itemLabel="Selecione um Modelo de Empresa" />
+					<f:selectItems 
+						value="#{usuarioController.listaModeloEmpresa}" 
+						var="obj"
+						itemLabel="#{obj.nome}"/>
+				</h:selectOneMenu>
+				
+			<h:outputLabel value="Casa em Harry Potter "/>
+				<h:selectOneMenu value="#{usuarioController.usuario.CasasHP}">
+					<f:selectItem itemLabel="Selecione uma casa ..." />
+					<f:selectItems 
+						value="#{usuarioController.listaCasasHP}" 
+						var="obj"
+						itemLabel="#{obj.label}"/>
+				</h:selectOneMenu>
 			<h:outputLabel value="Senha: "/>
 			<h:inputSecret value="#{usuarioController.usuario.senha}"
 			required="true"
 			requiredMessage="A senha deve ser Informada!"
 			/>
+			
 		</h:panelGrid>
 		<h:panelGrid columns="4">
 			<h:commandButton 

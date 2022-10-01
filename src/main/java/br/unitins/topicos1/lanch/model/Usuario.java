@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -20,6 +22,21 @@ public class Usuario implements Cloneable {
 	@NotBlank(message = "A Senha deve ser informada!")
 	private String senha;
 	private LocalDate dataNascimento;
+	
+	private CasasHP casasHP;
+	
+	@ManyToOne
+	@JoinColumn(name = "idModelEmpresa")
+	private ModeloEmpresa modeloEmpresa;
+	
+	
+	public ModeloEmpresa getModelEmpresa() {
+		return modeloEmpresa;
+	}
+	
+	public void setModelEmpresa(ModeloEmpresa modelEmpresa) {
+		this.modeloEmpresa = modelEmpresa;
+	}
 	
 	public Usuario getClone() {
 		try {
@@ -84,7 +101,12 @@ public class Usuario implements Cloneable {
 		Usuario other = (Usuario) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+	public CasasHP getCasasHP() {
+		return casasHP;
+	}
+	public void setCasasHP(CasasHP casasHP) {
+		this.casasHP = casasHP;
+	}	
 	
 
 }

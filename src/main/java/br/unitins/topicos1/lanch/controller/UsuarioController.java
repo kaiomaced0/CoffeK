@@ -12,7 +12,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import br.unitins.topicos1.hash.HashUtils;
+import br.unitins.topicos1.lanch.model.CasasHP;
+import br.unitins.topicos1.lanch.model.ModeloEmpresa;
 import br.unitins.topicos1.lanch.model.Usuario;
+import br.unitins.topicos1.lanch.repository.ModeloEmpresaRepository;
 import br.unitins.topicos1.lanch.repository.UsuarioRepository;
 
 @Named
@@ -23,6 +26,19 @@ public class UsuarioController implements Serializable {
 	private static final long serialVersionUID = 168067236765100328L;
 	private Usuario usuario = null;
 	private List<Usuario> listaUsuario;
+	private List<ModeloEmpresa> listaModeloEmpresa;
+	
+	public List<ModeloEmpresa> getListaEstado() {
+		if (listaModeloEmpresa == null) { 
+			ModeloEmpresaRepository repo = new ModeloEmpresaRepository();
+			listaModeloEmpresa = repo.buscarTodos();
+		}
+		return listaModeloEmpresa;
+	}
+	
+	public CasasHP[] getListaCasasHP() {
+		return CasasHP.values();
+	}
 	
 	public void validarLogin() {
 		if(getUsuario().getLogin().equals("teste22")) {
@@ -98,6 +114,14 @@ public class UsuarioController implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public List<ModeloEmpresa> getListaModeloEmpresa() {
+		return listaModeloEmpresa;
+	}
+
+	public void setListaModeloEmpresa(List<ModeloEmpresa> listaModeloEmpresa) {
+		this.listaModeloEmpresa = listaModeloEmpresa;
 	}
 
 }
