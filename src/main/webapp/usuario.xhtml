@@ -6,8 +6,8 @@
 	<title>Cadastro de Usuário</title>
 </h:head>
 <h:body>
-<h:messages style="color:red" showDetail="false"/>
-	<h:form>
+<h:messages id="messages" style="color:red" showDetail="false"/>
+	<h:form id="formulario">
 	<h:panelGroup id="pgPrincipal">
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nome: "/>
@@ -20,8 +20,16 @@
 			<f:ajax execute="@this" 
 					render="messages"
 					event="blur"
-					listener="#{usuarioController.validaLogin}"
+					listener="#{usuarioController.validarLogin}"
 			/>
+			<h:outputLabel value="Data de Nascimento "/>
+			<h:inputText id="itData nascimento" value="#{usuarioController.usuario.dataNascimento}">
+			<f:ajax execute="@this" 
+					render="messages"
+					event="blur"
+					listener="#{usuarioController.validarLogin}"
+			/>
+			<f:convertDateTime pattern="dd/MM/yyyy" type="localDate"/>
 			</h:inputText>
 			<h:outputLabel value="Senha: "/>
 			<h:inputSecret value="#{usuarioController.usuario.senha}"

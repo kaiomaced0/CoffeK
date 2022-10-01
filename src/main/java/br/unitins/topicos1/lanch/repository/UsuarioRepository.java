@@ -15,7 +15,7 @@ public class UsuarioRepository {
 
 	private EntityManager getEntityManager() {
 		if (entityManager == null) {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("Farmacia");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("Lanch");
 			entityManager = emf.createEntityManager();
 		}
 		return entityManager;

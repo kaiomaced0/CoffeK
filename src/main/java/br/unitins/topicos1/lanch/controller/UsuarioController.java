@@ -24,9 +24,10 @@ public class UsuarioController implements Serializable {
 	private Usuario usuario = null;
 	private List<Usuario> listaUsuario;
 	
-	public void validaLogin() {
+	public void validarLogin() {
 		if(getUsuario().getLogin().equals("teste22")) {
-			FacesMessage message = new FacesMessage("Login ja existe", null);
+			FacesMessage message = new FacesMessage(
+					FacesMessage.SEVERITY_ERROR, "Login ja existe", null);
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
 		
@@ -60,6 +61,7 @@ public class UsuarioController implements Serializable {
 	public void excluir(Usuario usu) {
 		UsuarioRepository repo = new UsuarioRepository();
 		repo.deletar(usu.getId());
+		listaUsuario = null;
 	}
 	
 	public void limpar() {

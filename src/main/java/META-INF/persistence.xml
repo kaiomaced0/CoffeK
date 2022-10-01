@@ -16,7 +16,7 @@
 
 			<!-- DB User -->
 			<property name="javax.persistence.jdbc.user"
-				value="topicos1" />
+				value="topicos1"/>
 
 			<!-- DB Password -->
 			<property name="javax.persistence.jdbc.password"
@@ -27,7 +27,7 @@
 				value="org.hibernate.dialect.PostgreSQLDialect" />
 
 			<!-- create / create-drop / update / none -->
-			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 
 			<!-- Show SQL in console -->
 			<property name="hibernate.show_sql" value="true" />
