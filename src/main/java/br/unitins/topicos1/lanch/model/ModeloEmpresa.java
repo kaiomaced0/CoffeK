@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ModeloEmpresa {
+public class ModeloEmpresa{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

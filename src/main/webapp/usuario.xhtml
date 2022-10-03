@@ -6,15 +6,20 @@
 	<title>Cadastro de Usuário</title>
 </h:head>
 <h:body>
-<h:messages id="messages" style="color:red" showDetail="false"/>
+	
 	<h:form id="formulario">
+	
+	<h:messages id="messages" errorStyle="color:red" infoStyle="color:green" warnStyle="color:blue" showDetail="false"/>
+		
 	<h:panelGroup id="pgPrincipal">
+	
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nome: "/>
 			<h:inputText id="itNome" value="#{usuarioController.usuario.nome}"
 			required="true"
 			requiredMessage="O nome deve ser Informado!"
 			/>
+			
 			<h:outputLabel value="Login: "/>
 			<h:inputText id="itLogin" value="#{usuarioController.usuario.login}">
 			<f:ajax execute="@this" 
@@ -23,6 +28,7 @@
 					listener="#{usuarioController.validarLogin}"
 			/>
 			</h:inputText>
+			
 			<h:outputLabel value="Data de Nascimento "/>
 			<h:inputText id="itDataNascimento" value="#{usuarioController.usuario.dataNascimento}">
 			<f:ajax execute="@this" 
@@ -34,7 +40,7 @@
 			</h:inputText>
 			
 				<h:outputLabel value="Modelo da empresa em que trabalha "/>
-				<h:selectOneMenu value="#{usuarioController.usuario.modelEmpresa}">
+				<h:selectOneMenu value="#{usuarioController.usuario.modeloEmpresa}">
 					<f:selectItem itemLabel="Selecione um Modelo de Empresa" />
 					<f:selectItems 
 						value="#{usuarioController.listaModeloEmpresa}" 
@@ -43,7 +49,7 @@
 				</h:selectOneMenu>
 				
 			<h:outputLabel value="Casa em Harry Potter "/>
-				<h:selectOneMenu value="#{usuarioController.usuario.CasasHP}">
+				<h:selectOneMenu value="#{usuarioController.usuario.casasHP}">
 					<f:selectItem itemLabel="Selecione uma casa ..." />
 					<f:selectItems 
 						value="#{usuarioController.listaCasasHP}" 

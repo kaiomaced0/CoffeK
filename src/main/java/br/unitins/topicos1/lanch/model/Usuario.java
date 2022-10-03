@@ -30,12 +30,12 @@ public class Usuario implements Cloneable {
 	private ModeloEmpresa modeloEmpresa;
 	
 	
-	public ModeloEmpresa getModelEmpresa() {
+	public ModeloEmpresa getModeloEmpresa() {
 		return modeloEmpresa;
 	}
 	
-	public void setModelEmpresa(ModeloEmpresa modelEmpresa) {
-		this.modeloEmpresa = modelEmpresa;
+	public void setModeloEmpresa(ModeloEmpresa modeloEmpresa) {
+		this.modeloEmpresa = modeloEmpresa;
 	}
 	
 	public Usuario getClone() {

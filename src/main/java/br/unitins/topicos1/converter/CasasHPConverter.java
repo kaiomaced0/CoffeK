@@ -1,4 +1,4 @@
-package br.unitins.topicos1.converter.jpa;
+package br.unitins.topicos1.converter;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

@@ -2,44 +2,16 @@ package br.unitins.topicos1.lanch.repository;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import br.unitins.topicos1.lanch.model.Usuario;
 
-public class UsuarioRepository {
-
-	private EntityManager entityManager = null;
-
-	private EntityManager getEntityManager() {
-		if (entityManager == null) {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("Lanch");
-			entityManager = emf.createEntityManager();
-		}
-		return entityManager;
-	}
+public class UsuarioRepository extends Repository<Usuario>{
 
 	public List<Usuario> buscarTodos() {
-		Query query = getEntityManager().createQuery("SELECT u FROM Usuario u");
-		return query.getResultList();
+		Query query = getEntityManager().createQuery("SELECT e FROM Usuario");
+		return query.getResultList(); 
 	}
-
-	public void salvar(Usuario usuario) {
-		getEntityManager().getTransaction().begin();
-		getEntityManager().merge(usuario);
-		getEntityManager().getTransaction().commit();
-	}
-
-	public void deletar(int id) {
-		Usuario usuario = getEntityManager().find(Usuario.class, id);
-		if (usuario != null) {
-			getEntityManager().getTransaction().begin();
-			getEntityManager().remove(usuario);
-			getEntityManager().getTransaction().commit();
-		}
+	//salvar e Deletar estão no Repository
 
 	}
-
-}

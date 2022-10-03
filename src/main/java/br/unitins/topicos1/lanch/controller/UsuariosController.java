@@ -54,7 +54,5 @@ public class UsuariosController implements Serializable {
 	public void excluir(Usuario usuario) {
 		
 	}
-	
-	
 
 }

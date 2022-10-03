@@ -27,7 +27,7 @@ public class FormUsuarioController implements Serializable {
 	private Usuario usuario = null;
 	private List<ModeloEmpresa> listaModeloEmpresa;
 	
-	public List<ModeloEmpresa> getListaEstado() {
+	public List<ModeloEmpresa> getListaModeloEmpresa() {
 		if (listaModeloEmpresa == null) { 
 			ModeloEmpresaRepository repo = new ModeloEmpresaRepository();
 			listaModeloEmpresa = repo.buscarTodos();
@@ -62,70 +62,14 @@ public class FormUsuarioController implements Serializable {
 	
 	public String salvar() {
 		UsuarioRepository repo = new UsuarioRepository();
+		
 		repo.salvar(getUsuario());
 		// o cancelar retorna para a pagina anterior
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		flash.put("mensagem", "Usuario salvo com sucesso")
+		flash.put("mensagem", "Usuario salvo com sucesso");
 		return cancelar();
 	}
 	
-	public void incluir() {
-		UsuarioRepository repo = new UsuarioRepository();
-		getUsuario().setSenha(HashUtils.getHashMd5(getUsuario().getSenha()));
-		repo.salvar(getUsuario());
-		limpar();
-		// foi setado como nulo para buscar no banco
-		listaUsuario = null;
-	}
-	
-	public void alterar() {
-		UsuarioRepository repo = new UsuarioRepository();
-		getUsuario().setSenha(HashUtils.getHashMd5(getUsuario().getSenha()));
-		repo.salvar(getUsuario());
-		limpar();
-		// foi setado como nulo para buscar no banco
-		listaUsuario = null;
-	}
-	
-	// acionado pelo botao excluir
-	public void excluir() {
-		excluir(getUsuario());
-		limpar();	
-	}
-	
-	// acionado pelo botao da tabela (excluir)
-	public void excluir(Usuario usu) {
-		UsuarioRepository repo = new UsuarioRepository();
-		repo.deletar(usu.getId());
-		listaUsuario = null;
-	}
-	
-	public void limpar() {
-		usuario = null;
-	}
-	
-	public void editar(Usuario usu) {
-		setUsuario(usu);
-		
-//		setUsuario(usu.getClone());
-		
-//		setUsuario(new Usuario());
-//		getUsuario().setId(usu.getId());
-//		getUsuario().setNome(usu.getNome());
-//		getUsuario().setLogin(usu.getLogin());
-//		getUsuario().setSenha(usu.getSenha());
-	}
-	
-	public List<Usuario> getListaUsuario() {
-		if (listaUsuario == null) {
-			UsuarioRepository repo = new UsuarioRepository();
-			listaUsuario = repo.buscarTodos();
-			if (listaUsuario == null)
-				listaUsuario = new ArrayList<Usuario>();
-		}
-		return listaUsuario;
-	}
-
 	public Usuario getUsuario() {
 		if (usuario == null)
 			usuario = new Usuario();
@@ -134,10 +78,6 @@ public class FormUsuarioController implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public List<ModeloEmpresa> getListaModeloEmpresa() {
-		return listaModeloEmpresa;
 	}
 
 	public void setListaModeloEmpresa(List<ModeloEmpresa> listaModeloEmpresa) {

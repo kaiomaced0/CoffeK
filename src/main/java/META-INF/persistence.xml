@@ -6,7 +6,7 @@
 	<persistence-unit name="Lanch">
 		<class>br.unitins.topicos1.lanch.model.Usuario</class>
 		<class>br.unitins.topicos1.lanch.model.ModeloEmpresa</class>
-		<class>br.unitins.topicos1.converter.jpa.CasasHPConverter</class>
+		<class>br.unitins.topicos1.converter.CasasHPConverter</class>
 		<properties>
 			<!-- DB Driver -->
 			<property name="javax.persistence.jdbc.driver"

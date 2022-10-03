@@ -28,7 +28,7 @@ public class UsuarioController implements Serializable {
 	private List<Usuario> listaUsuario;
 	private List<ModeloEmpresa> listaModeloEmpresa;
 	
-	public List<ModeloEmpresa> getListaEstado() {
+	public List<ModeloEmpresa> getListaModeloEmpresa() {
 		if (listaModeloEmpresa == null) { 
 			ModeloEmpresaRepository repo = new ModeloEmpresaRepository();
 			listaModeloEmpresa = repo.buscarTodos();
@@ -76,7 +76,7 @@ public class UsuarioController implements Serializable {
 	// acionado pelo botao da tabela (excluir)
 	public void excluir(Usuario usu) {
 		UsuarioRepository repo = new UsuarioRepository();
-		repo.deletar(usu.getId());
+		repo.deletar(usu);
 		listaUsuario = null;
 	}
 	
@@ -114,10 +114,6 @@ public class UsuarioController implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public List<ModeloEmpresa> getListaModeloEmpresa() {
-		return listaModeloEmpresa;
 	}
 
 	public void setListaModeloEmpresa(List<ModeloEmpresa> listaModeloEmpresa) {

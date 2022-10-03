@@ -1,4 +1,4 @@
-package br.unitins.topicos1.converter.jpa;
+package br.unitins.topicos1.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -17,16 +17,17 @@ public class ModeloEmpresaConverter implements Converter<ModeloEmpresa>{
 	public ModeloEmpresa getAsObject(FacesContext context, UIComponent component, String value) {
 		if (value == null || value.isBlank())
 			return null;
-		ModeloEmpresaRepository estado = new ModeloEmpresaRepository();
-		return estado.buscarPeloId(Integer.valueOf(value));
+		ModeloEmpresaRepository modeloEmpresa = new ModeloEmpresaRepository();
+		return modeloEmpresa.buscarPeloId(Integer.valueOf(value));
+		
 	}
 
 	@Override
-	public String getAsString(FacesContext context, UIComponent component, ModeloEmpresa value) {
-		if (value == null || value.getId() == null)
+	public String getAsString(FacesContext context, UIComponent component, ModeloEmpresa modeloEmpresa) {
+		if (modeloEmpresa == null || modeloEmpresa.getId() == null)
 			return null;
 		
-		return value.getId().toString();
+		return modeloEmpresa.getId().toString();
 	}
 	
 	
