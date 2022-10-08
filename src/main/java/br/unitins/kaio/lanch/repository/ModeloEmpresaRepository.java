@@ -1,11 +1,11 @@
-package br.unitins.topicos1.lanch.repository;
+package br.unitins.kaio.lanch.repository;
 
 import java.util.List;
 
 import javax.persistence.Query;
 
-import br.unitins.topicos1.lanch.model.ModeloEmpresa;
-import br.unitins.topicos1.lanch.model.Usuario;
+import br.unitins.kaio.lanch.model.ModeloEmpresa;
+import br.unitins.kaio.lanch.model.Usuario;
 
 public class ModeloEmpresaRepository extends Repository<ModeloEmpresa>{
 	

@@ -1,4 +1,4 @@
-package br.unitins.topicos1.lanch.controller;
+package br.unitins.kaio.lanch.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import br.unitins.topicos1.application.Util;
-import br.unitins.topicos1.lanch.model.Usuario;
-import br.unitins.topicos1.lanch.repository.UsuarioRepository;
+import br.unitins.kaio.application.Util;
+import br.unitins.kaio.lanch.model.Usuario;
+import br.unitins.kaio.lanch.repository.UsuarioRepository;
 
 @Named
 @ViewScoped

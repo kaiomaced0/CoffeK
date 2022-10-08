@@ -1,9 +1,9 @@
-package br.unitins.topicos1.converter;
+package br.unitins.kaio.converter;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
-import br.unitins.topicos1.lanch.model.CasasHP;
+import br.unitins.kaio.lanch.model.CasasHP;
 
 @Converter(autoApply = true)
 public class CasasHPConverter implements AttributeConverter<CasasHP, Integer> {

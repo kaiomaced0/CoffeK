@@ -1,4 +1,4 @@
-package br.unitins.topicos1.lanch.model;
+package br.unitins.kaio.lanch.model;
 
 import java.time.LocalDate;
 import java.util.Objects;

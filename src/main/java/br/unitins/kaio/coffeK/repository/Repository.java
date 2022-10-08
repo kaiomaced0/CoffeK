@@ -1,4 +1,4 @@
-package br.unitins.topicos1.lanch.repository;
+package br.unitins.kaio.coffeK.repository;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import br.unitins.topicos1.lanch.model.ModeloEmpresa;
-import br.unitins.topicos1.lanch.model.Usuario;
+import br.unitins.kaio.lanch.model.ModeloEmpresa;
+import br.unitins.kaio.lanch.model.Usuario;
 
 
 public class Repository <T> {
@@ -17,7 +17,7 @@ public class Repository <T> {
 	
 	protected EntityManager getEntityManager() {
 		if(entityManager == null) {
-			EntityManagerFactory em = Persistence.createEntityManagerFactory("Lanch");
+			EntityManagerFactory em = Persistence.createEntityManagerFactory("CoffeK");
 			entityManager = em.createEntityManager();
 		}
 		return entityManager;
@@ -27,9 +27,9 @@ public class Repository <T> {
 		this.entityManager = entityManager;
 	}
 
-	public void salvar(T entidade) {
+	public void salvar(T obj) {
 		getEntityManager().getTransaction().begin(); 
-		getEntityManager().merge(entidade);
+		getEntityManager().merge(obj);
 		getEntityManager().getTransaction().commit();
 	}
 	
@@ -40,8 +40,4 @@ public class Repository <T> {
 			getEntityManager().getTransaction().commit();
 		}
 	}
-
-//	public T buscarPeloId(T obj) {
-//		return getEntityManager().merge(obj);
-//	}
 }

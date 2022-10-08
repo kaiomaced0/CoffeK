@@ -1,4 +1,4 @@
-package br.unitins.topicos1.hash;
+package br.unitins.kaio.hash;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

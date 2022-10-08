@@ -1,10 +1,10 @@
-package br.unitins.topicos1.lanch.repository;
+package br.unitins.kaio.coffeK.repository;
 
 import java.util.List;
 
 import javax.persistence.Query;
 
-import br.unitins.topicos1.lanch.model.Usuario;
+import br.unitins.kaio.coffeK.model.Usuario;
 
 public class UsuarioRepository extends Repository<Usuario>{
 
@@ -12,6 +12,6 @@ public class UsuarioRepository extends Repository<Usuario>{
 		Query query = getEntityManager().createQuery("SELECT e FROM Usuario");
 		return query.getResultList(); 
 	}
-	//salvar e Deletar estão no Repository
+	
 
-	}
+}

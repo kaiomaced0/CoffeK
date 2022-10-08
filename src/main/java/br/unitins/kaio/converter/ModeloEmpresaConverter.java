@@ -1,4 +1,4 @@
-package br.unitins.topicos1.converter;
+package br.unitins.kaio.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -6,8 +6,8 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 
-import br.unitins.topicos1.lanch.model.ModeloEmpresa;
-import br.unitins.topicos1.lanch.repository.ModeloEmpresaRepository;
+import br.unitins.kaio.lanch.model.ModeloEmpresa;
+import br.unitins.kaio.lanch.repository.ModeloEmpresaRepository;
 
 @Named
 @FacesConverter(forClass = ModeloEmpresa.class)

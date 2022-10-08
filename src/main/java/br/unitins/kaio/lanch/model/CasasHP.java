@@ -1,6 +1,6 @@
-package br.unitins.topicos1.lanch.model;
+package br.unitins.kaio.lanch.model;
 
-import br.unitins.topicos1.lanch.model.CasasHP;
+import br.unitins.kaio.lanch.model.CasasHP;
 
 public enum CasasHP {
 
